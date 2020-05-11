@@ -1,0 +1,3 @@
+[0511/193256.688:ERROR:crash_report_database_win.cc(585)] CreateDirectory C:\Users\bunza\AppData\Local\Temp\Microsoft\Edge\User Data\Crashpad: The system cannot find the path specified. (0x3)
+[0511/193256.693:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0511/193256.693:ERROR:crash_report_database_win.cc(585)] CreateDirectory C:\Users\bunza\AppData\Local\Temp\Microsoft\Edge\User Data\Crashpad: The system cannot find the path specified. (0x3)
