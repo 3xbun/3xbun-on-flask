@@ -3,15 +3,27 @@
 {% block content %}
 <hr>
 <div class="contact">
+    <div class="card-img">
+        <img src="" id="image">
+    </div>
     <form action="/update/{{work.id}}" method="POST">
     {{ form.hidden_tag() }}
     {{ form.name.label }}
     {{ form.name() }}
     {{ form.url.label }}
-    {{ form.url() }}
+    {{ form.url(onchange="updateImage()") }}
     {{ form.desc.label }}
     {{ form.desc() }}
     {{ form.submit() }}
     </form>
 </div>
+
+<script>
+    function updateImage() {
+        const img = document.getElementById('image');
+        const img_url = document.getElementById("url").value
+        img.src = img_url
+        console.log(img);
+    }
+</script>
 {% endblock %}

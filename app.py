@@ -103,4 +103,4 @@ def update(id):
     print(form.name.data)
     db.session.commit()
 
-    return redirect(url_for('edit', id=work.id))
+    return redirect(url_for('index'))
