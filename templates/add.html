@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+<form action="/add" method="POST">
+{{ form.hidden_tag() }}
+{{ form.name.label }}
+{{ form.name() }}
+{{ form.url.label }}
+{{ form.url() }}
+{{ form.desc.label }}
+{{ form.desc() }}
+{{ form.submit() }}
+</form>
+
+
+{% for work in works %}
+
+<a href="/work/{{work.id}}">
+    <div class="work">
+        <img src="https://i.imgur.com/HtKG3Pv.png" alt="{{work.name}}">
+        
+        <div class="overlay">
+            <div class="text"><i class="fas fa-search"></i></div>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% endblock %}

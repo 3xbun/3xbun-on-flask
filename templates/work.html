@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+
+<section class="card-work">
+    <h1 class="card-title">
+        {{work.name}}
+    </h1>
+    
+    <div class="card-img">
+        <img src="{{work.url}}" alt="{{work.name}}">
+    </div>
+
+    <div class="container card-desc"">
+        <p>{{work.desc}}</p>
+    </div>
+</section>
+
+{% endblock %}

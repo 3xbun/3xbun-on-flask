@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% set active_page = "contact" %}
+
+{% block content %}
+<hr>
+<section class="contact">
+    <img class="profile-image" src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-9/58887032_2216996658392148_4614423480258002944_o.jpg?_nc_cat=108&_nc_sid=174925&_nc_eui2=AeHvQRn5gFmPhvpVi5LyOSgPpHuyQ34kUkCke7JDfiRSQGbFF96lkFKDUw8vop2wWKUDIf3hU5dvUg4sr37RoS7m&_nc_oc=AQkp3yDwjNzXvwhpnGHWOsEZymwHPezfNaKwL4fshyDIljDlGmisGF_zSQcsEe0_KqM&_nc_ht=scontent.fbkk22-1.fna&oh=a57f09634100e7ad20639d437ad36d5d&oe=5EDCA121" alt="profile-image">
+
+    <h1>Let's Work Together</h1>
+
+    <p>Professional Graphic Designer currently living in Bangkok, Thailand. I live in a world of infinite possibilities, preferring to see things not as they are but as they could be. I'm a problem solver with a keen interest in contributing to society through design.</p>
+
+    <form action="{{ url_for('contact') }}" method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.subject.label }} <br>
+        {{ form.subject() }} <br>
+        {{ form.name.label }} <br>
+        {{ form.name() }} <br>
+        {{ form.email.label }} <br>
+        {{ form.email() }} <br>
+        {{ form.msg.label }} <br>
+        {{ form.msg(cols="20", rows="5") }} <br>
+        {{ form.submit(id='submit') }}
+    </form>
+</section>
+{% endblock %}

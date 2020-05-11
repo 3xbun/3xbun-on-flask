@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>3xbun Studio</title>
+</head>
+<body>
+    <header id="header">
+        <a href="/">
+            <img class="logo" src="{{ url_for('static', filename='img/auto.png') }}" alt="logo">
+        </a>
+    </header>
+
+    <nav id="nav">
+        <ul>
+            <li><a class="nav-link {{ 'active' if active_page == 'index' else '' }}" href="/">PORTFOLIO</a></li>
+            <li><a class="nav-link {{ 'active' if active_page == 'contact' else '' }}" href="/contact" >CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <p><span>&copy;2020</span> 3xbun Studio</p>
+            <ul class="contact-links">
+                <li>
+                    <a href="https://www.linkedin.com/in/3xbun/" target="_blank">
+                    <i class="fab fa-linkedin-in"></i></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/3xbunn" target="_blank">
+                    <i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="https://facebook.com/3xbun" target="_blank">
+                    <i class="fab fa-facebook-f"></i></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
