@@ -3,6 +3,9 @@
 {% block content %}
 <hr>
 <div class="contact">
+    <div class="card-img">
+        <img src="" id="image">
+    </div>
     <form action="/add" method="POST">
     {{ form.hidden_tag() }}
     {{ form.name.label }}
