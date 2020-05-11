@@ -9,7 +9,7 @@ import os, os.path
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or "postgresql://postgres:top2541top@localhost:5432/db_work"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://lsaccxmwhqjhlx:5c13873fd2cebc75e5aa598cfe676ce896641d197a5188ea66d825d5351448ad@ec2-34-200-72-77.compute-1.amazonaws.com:5432/d60scqmfkm8n5k"
 app.config['SECRET_KEY'] = 'password'
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
