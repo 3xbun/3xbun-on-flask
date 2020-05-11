@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, validators, ValidationError
 from flask_mail import Message, Mail
@@ -45,25 +46,13 @@ class Work(db.Model):
 
 @app.route('/')
 def index():
-    works = Work.query.all()
+    works = Work.query.order_by(desc(Work.id)).all()
     return render_template('index.html', works=works)
 
 @app.route('/work/<id>')
 def work(id):
     work = Work.query.get(id)
     return render_template('work.html', work=work)
-
-@app.route('/add', methods=['POST', 'GET'])
-def add():
-    form = workForm()
-
-    if form.validate_on_submit():
-        work = Work(name=form.name.data, url=form.url.data, desc=form.desc.data)
-        db.session.add(work)
-        db.session.commit()
-        return redirect(url_for('index'))
-
-    return render_template('add.html', form=form)
 
 @app.route('/contact', methods=['POST', 'GET'])
 def contact():
@@ -79,3 +68,39 @@ def contact():
         return redirect(url_for('index'))
 
     return render_template('contact.html', form=form)
+
+@app.route('/add', methods=['POST', 'GET'])
+def add():
+    form = workForm()
+
+    if form.validate_on_submit():
+        work = Work(name=form.name.data, url=form.url.data, desc=form.desc.data)
+        db.session.add(work)
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    return render_template('add.html', form=form)
+
+@app.route('/edit/<id>', methods=['POST', 'GET'])
+def edit(id):
+    work = Work.query.get(id)
+    form = workForm()
+
+    form.name.data = work.name
+    form.url.data = work.url
+    form.desc.data = work.desc
+    
+    return render_template('edit.html', work=work, form=form)
+
+@app.route('/update/<id>', methods=['POST'])
+def update(id):
+    work = Work.query.get_or_404(id)
+    form = workForm()
+
+    work.name = form.name.data
+    work.url = form.url.data
+    work.desc = form.desc.data
+    print(form.name.data)
+    db.session.commit()
+
+    return redirect(url_for('edit', id=work.id))
